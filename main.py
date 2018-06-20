@@ -9,5 +9,5 @@ logging.basicConfig(filename='example.log',level=logging.INFO)
 
 #actual code
 key, summary, description = GetIssueFields("EMSPM-14628")
-GetIssues(2017)
+#GetIssues(2017)
 Export("export",".txt",key)

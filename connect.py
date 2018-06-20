@@ -10,7 +10,6 @@ from Auth import connect_jira
 def connect():
     file = open("config.txt", "r").read();
     server,user,passw = file.split("=")
-    print(user, passw)
     # create a connection object, jc
     return connect_jira(server, user, passw)
 
