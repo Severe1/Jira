@@ -1,13 +1,10 @@
-from jira import JIRA
-from Auth import connect_jira
 import logging
+from connect import *
 
-def GetIssueFields ():
-    # create a connection object, jc
-    jc = connect_jira("https://ims.everest.nl", "", "")
-
+def GetIssueFields (issue):
     # find an issue
-    issue = jc.issue("EMSPM-14268")
+    jc = connect()
+    issue = jc.issue(issue)
 
     key = issue.key
     logging.info("The key found equals "+ key)
