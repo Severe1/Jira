@@ -1,5 +1,13 @@
-from jira.client import JIRA
+# This module connect to the jira database
+# Takes a config.txt file with line
+# server=username=password
+#
+#
 import logging
+from jira.client import JIRA
+
+# create logger
+log = logging.getLogger(__name__)
 
 # Defines a function for connecting to Jira
 def connect_jira(jira_server, jira_user, jira_password):
@@ -16,5 +24,10 @@ def connect_jira(jira_server, jira_user, jira_password):
         log.error("Failed to connect to JIRA: %s" % e)
         return None
 
-# create logger
-log = logging.getLogger(__name__)
+def connect():
+    file = open("config.txt", "r").read();
+    server,user,passw = file.split("\n")[0].split('=')
+    # create a connection object, jc
+    return connect_jira(server, user, passw)
+
+connect()
